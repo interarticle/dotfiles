@@ -109,13 +109,7 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-" set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-
-" Always show statusline
-set laststatus=2
-"
-" " Use 256 colours (Use this setting only if your terminal supports 256
-" colours)
+" Force full color
 set t_Co=256
 
 
@@ -136,6 +130,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>h <C-w>h
+" due to the cscope plugin, <Leader>l is already taken
 nnoremap <Leader>L <C-w>l
 nnoremap <Leader>C <C-w>c
 nnoremap <Leader>m :make<CR>
