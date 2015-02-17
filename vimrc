@@ -29,6 +29,10 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-scripts/cscope.vim'
 Plugin 'mru.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'Emmet.vim'
+Plugin 'surround.vim'
+
+Plugin 'lukaszb/vim-web-indent'
 
 call vundle#end()
 
@@ -140,6 +144,9 @@ nnoremap <Leader>n :tabn<CR>
 set tags=.tags;
 let g:clang_complete_macros = 1
 
-let g:solarized_contrast = "low"
+let g:solarized_contrast = "normal"
+let g:user_emmet_expandabbr_key = '<C-e>'
+nnoremap <Leader>e :Emmet<Space>
 set background=dark
 color solarized
+hi ColorColumn guibg=#dc322f ctermbg=131
