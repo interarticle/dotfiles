@@ -1,3 +1,15 @@
+" Force encoding
+" Resolves problems on Windows for potentially Unicode source/names
+scriptencoding utf-8
+set encoding=utf-8
+
+" Single Run Wrap
+if !exists('g:encoding_set')
+    let g:encoding_set=1
+    source ~/.vimrc
+else
+
+set ff=unix
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -17,11 +29,18 @@ endif
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+
+if has('win32')
+    " Windows specific YCM and MSYS-2 Specific stuff
+    let $PATH=$PATH.';D:\Python27'
+    let &shell=$COMSPEC
+endif
 
 Plugin 'valloric/YouCompleteMe'
 Plugin 'Lokaltog/vim-easymotion'
@@ -33,6 +52,18 @@ Plugin 'Emmet.vim'
 Plugin 'surround.vim'
 
 Plugin 'lukaszb/vim-web-indent'
+
+Plugin 'jade.vim'
+
+Plugin 'vim-coffee-script'
+
+Plugin 'hynek/vim-python-pep8-indent'
+
+Plugin 'JulesWang/css.vim'
+Plugin 'genoma/vim-less'
+
+Plugin 'marijnh/tern_for_vim'
+
 
 call vundle#end()
 
@@ -117,7 +148,7 @@ endif
 set t_Co=256
 
 
-"Personal settings
+" Personal settings
 set expandtab
 set sts=4
 set ts=4
@@ -150,3 +181,8 @@ nnoremap <Leader>e :Emmet<Space>
 set background=dark
 color solarized
 hi ColorColumn guibg=#dc322f ctermbg=131
+
+autocmd FileType jade setlocal sts=2 sw=2 ts=2
+
+" End Single Run Wrap
+endif
