@@ -30,3 +30,25 @@ export PATH=~/.gem/ruby/2.1.0/bin:$PATH
 #fi
 alias epl='source ~/.local/lib/python3.4/site-packages/powerline/bindings/bash/powerline.sh'
 alias emacst='emacs -nw'
+
+set_gopath() {
+    local detectdir="$(realpath .)"
+    local lastpath=""
+    local detected=0
+    while [[ "${detectdir}" != "${lastpath}" ]]; do
+        lastpath="${detectdir}"
+        if [ -f "${detectdir}/.gopath" ]; then
+            echo "Using detected path ${detectdir}"
+            export GOPATH="${detectdir}"
+            detected=1
+            break
+        fi
+        detectdir="$(dirname "${detectdir}")"
+    done
+
+    if (( ! detected )); then
+        echo "Cannot detect gopath directory. Create a .gopath file in the"\
+            "right folder."
+        return 1
+    fi
+}
