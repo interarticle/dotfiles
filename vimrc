@@ -28,11 +28,16 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-scripts/cscope.vim'
 Plugin 'mru.vim'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'lifepillar/vim-solarized8'
 Plugin 'Emmet.vim'
 Plugin 'surround.vim'
 
 Plugin 'lukaszb/vim-web-indent'
+
+Plugin 'ctrlp.vim'
+Plugin 'marijnh/tern_for_vim'
+
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 
@@ -113,9 +118,6 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-" Force full color
-set t_Co=256
-
 
 "Personal settings
 set expandtab
@@ -148,5 +150,15 @@ let g:solarized_contrast = "normal"
 let g:user_emmet_expandabbr_key = '<C-e>'
 nnoremap <Leader>e :Emmet<Space>
 set background=dark
-color solarized
+
+if !has('gui_running')
+    set termguicolors
+    if $TERM == "screen-256color"
+        let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+    endif
+endif
+
+color solarized8_light
 hi ColorColumn guibg=#dc322f ctermbg=131
+hi MatchParen guibg=bg guifg=#dc322f
