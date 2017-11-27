@@ -1,0 +1,7 @@
+    s = status
+    l = log --color=auto
+    lo = log --color=auto --oneline
+    lss = log --color=auto --summary --stat --decorate
+    d = diff --color=auto
+    dw = diff --color-words
+    ss = ! "cd $(git rev-parse --show-toplevel) && numfmt --to=iec-i --suffix=B --padding=7 $(git diff --staged --name-only | xargs -d '\n' stat --printf='%s\n' | paste -sd+ | bc)"
