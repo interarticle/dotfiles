@@ -1,0 +1,21 @@
+[user]
+	name = Max Zhao
+	email = interarticle@gmail.com
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 0x0+0+0
+	history-view-vpane-position = 485
+	main-window-view = HistoryView
+	file-view-vpane-position = 669
+[push]
+	default = matching
+[alias]
+    s = status
+    l = log --color=auto
+    lo = log --color=auto --oneline
+    lss = log --color=auto --summary --stat
+    d = diff --color=auto
+    dw = diff --color-words
+    dc = diff --cached
+    au = add -u
+    ss = ! "cd $(git rev-parse --show-toplevel) && numfmt --to=iec-i --suffix=B --padding=7 $(git diff --staged --name-only | xargs -d '\n' stat --printf='%s\n' | paste -sd+ | bc)"
